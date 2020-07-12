@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./podman-configuration.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -43,11 +44,10 @@
     wget vim # Default recommended
     podman runc conmon slirp4netns fuse-overlayfs # podman utils
     openvpn # Connectivity
+    git gnupg # General needed tools
     open-vm-tools
-    tmux fish
-    neofetch
+    tmux fish neofetch htop
     nixos-grub2-theme nixos-icons
-    htop
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -66,7 +66,7 @@
 
   # Open ports in the firewall.
   networking.firewall.allowedTCPPorts = [ 22 ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedUDPPorts = [ 22 ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
@@ -78,29 +78,28 @@
   hardware.pulseaudio.enable = true;
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.layout = "us";
+  # services.xserver.enable = true;
+  # services.xserver.layout = "us";
   # services.xserver.xkbOptions = "eurosign:e";
 
   # Enable touchpad support.
   # services.xserver.libinput.enable = true;
 
   # Enable the KDE Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  # services.xserver.displayManager.sddm.enable = true;
+  # services.xserver.desktopManager.plasma5.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.david = {
-    packages = with pkgs; [ 
-      firefox 
+    packages = with pkgs; [
       git gnupg
-      starship
+      fish starship exa hexyl bat
     ];
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     subUidRanges = [{ startUid = 100000; count = 65536; }];
     subGidRanges = [{ startGid = 100000; count = 65536; }];
-    openssh.authorizedKeys.keys= ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIgFke+ROJ3/V2S6qZ/FocKa4HLsGW2F2aBcZAlN8kPY david@DH-LAPTOP2" ];
+    openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMNGHlmwe95TX1/5DQNqoZqiaZf6jYb7pmMGgdYaMp6t david@DH-LAPTOP2"];
     shell = pkgs.fish;
   };
 
@@ -112,34 +111,4 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "20.03"; # Did you read the comment?
 
-  # configuration files for podman
-  environment.etc."containers/policy.json" = {
-    mode="0644";
-    text=''
-      {
-        "default": [
-          {
-            "type": "insecureAcceptAnything"
-          }
-        ],
-        "transports":
-          {
-            "docker-deamon":
-              {
-                "": [{"type":"insecureAcceptAnything"}]
-              }
-          }
-      }
-    '';
-  };
-
-  environment.etc."containers/registries.conf" = {
-    mode="0644";
-    text=''
-      [registries.search]
-      registires = ['docker.io', 'quay.io']
-    '';
-  };
-
 }
-
