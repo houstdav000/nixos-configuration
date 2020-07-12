@@ -42,7 +42,6 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     wget vim # Default recommended
-    podman runc conmon slirp4netns fuse-overlayfs # podman utils
     openvpn # Connectivity
     git gnupg # General needed tools
     open-vm-tools
@@ -96,6 +95,8 @@
       fish starship exa hexyl bat
     ];
     isNormalUser = true;
+    home = "/home/david";
+    description = "David Houston";
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
     subUidRanges = [{ startUid = 100000; count = 65536; }];
     subGidRanges = [{ startGid = 100000; count = 65536; }];
