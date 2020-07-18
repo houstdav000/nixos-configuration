@@ -9,7 +9,7 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./podman-configuration.nix
-      ./gnome-conriguration.nix
+      ./gnome-configuration.nix
     ];
 
   # Use the systemd-boot EFI boot loader.

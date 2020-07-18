@@ -34,7 +34,6 @@
       tapping = true;
     };
     terminateOnReset = true;
-    tty = 7;
     useGlamor = true;
     videoDrivers = [ "intel" "vmware" "modesetting" ];
   };
