@@ -8,11 +8,7 @@
 
   # Import other configuration files
   imports = [
-    ./desktops/gnome.nix
     ./hosts/dh-nixos.nix
-    ./services/libvirt.nix
-    ./services/ssh.nix
-    ./services/podman.nix
     ./users/david.nix
   ];
 
