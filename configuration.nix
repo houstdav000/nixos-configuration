@@ -10,6 +10,8 @@
       ./hardware-configuration.nix
       ./podman-configuration.nix
       ./gnome-configuration.nix
+      ./luks_yubikey-configuration.nix
+      ./libvirt-configuration.nix
     ];
 
   networking.hostName = "dh-nixos"; # Define your hostname.
