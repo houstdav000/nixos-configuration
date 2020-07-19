@@ -14,7 +14,9 @@
   # Import other configuration files
   imports = [
     # Include the results of the hardware scan.
+    ../desktops/gnome.nix
     ../hardware/btrfs-filesystem.nix
+    ../services/sshd.nix
   ];
 
   networking.hostName = "dh-nixos"; # Define your hostname.
