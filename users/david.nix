@@ -7,9 +7,10 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.david = {
     packages = with pkgs; [
-      git gnupg
+      git gnupg vim vscode
       fish starship exa hexyl bat
       firefox thunderbird alacritty virt-manager
+      discord riot-desktop teams slack
     ];
     isNormalUser = true;
     home = "/home/david";
