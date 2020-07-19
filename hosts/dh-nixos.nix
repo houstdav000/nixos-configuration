@@ -15,7 +15,7 @@
   imports = [
     # Include the results of the hardware scan.
     ../desktops/gnome.nix
-    ../hardware/btrfs-filesystem.nix
+    ../hardware/ext4-filesystem.nix
     ../services/sshd.nix
   ];
 
