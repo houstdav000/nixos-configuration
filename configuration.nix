@@ -78,7 +78,7 @@
     packages = with pkgs; [
       git gnupg
       fish starship exa hexyl bat
-      firefox thunderbird alacritty
+      firefox thunderbird alacritty virt-manager
     ];
     isNormalUser = true;
     home = "/home/david";
