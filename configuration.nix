@@ -14,12 +14,13 @@
   # Import other configuration files
   imports = [
     # Include the results of the hardware scan.
-    ./hardware-configuration.nix
-    ./ssh-configuration.nix
-    ./podman-configuration.nix
-    ./gnome-configuration.nix
-    ./luks_yubikey-configuration.nix
-    ./libvirt-configuration.nix
+    ./desktops/gnome.nix
+    ./hardware/btrfs-filesystem.nix
+    ./hardware/luks-yubikey.nix
+    ./services/libvirt.nix
+    ./services/ssh.nix
+    ./services/podman.nix
+    ./users/david.nix
   ];
 
   networking.hostName = "dh-nixos"; # Define your hostname.
