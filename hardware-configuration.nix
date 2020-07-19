@@ -7,7 +7,6 @@
 # DON'T TELL ME WHAT TO DO
 
 { config, lib, pkgs, ... }: {
-  imports = [ ];
 
   boot = {
     initrd = {
@@ -15,19 +14,11 @@
       kernelModules = [ "dm-snapshot" ];
     };
     extraModulePackages = [ ];
-
-    enableContainers = true;
-    # Use the systemd-boot EFI boot loader.
-    loader = {
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
   };
-
 
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-label/root";
+      device = "/dev/disk/by-label/nixos-enc";
       fsType = "btrfs";
     };
 
