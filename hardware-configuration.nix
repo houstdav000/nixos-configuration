@@ -10,8 +10,23 @@
   boot = {
     initrd = {
       availableKernelModules = [ "ata_piix" "mptspi" "uhci_hcd" "ehci_pci" "sd_mod" "sr_mod" ];
-      kernelModules = [ "dm-snapshot" ];
-      luks.devices."nixos".device = "/dev/disk/by-partlabel/nixos";
+      kernelModules = [ "vfat" "nls_cp437" "nls_iso8859-1" "usbhid" "dm-snapshot" ];
+      luks = {
+        cryptoModules = [ "aes" "xts" "sha512" ];
+        yubikeysupport = true;
+        devices = [ {
+          name = "nixos";
+          device = "/dev/disk/by-partlabel/nixos";
+          preLVM = true;
+          yubikey = {
+            slot = 2;
+            twoFactor = true;
+            storage = {
+              device = "/dev/disk/by-label/boot";
+            };
+          };
+        } ];
+      };
     };
     kernelModules = [ "kvm-amd" "kvm-intel" ];
     extraModulePackages = [ ];
