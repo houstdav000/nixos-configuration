@@ -5,6 +5,9 @@
 #  and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { config, pkgs, ... }: {
+  # This is in a VM, so enable Virtualisation support
+  virtualisation.vmware.guest.enable = true;
+
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
     systemd-boot.enable = true;
@@ -37,7 +40,6 @@
     wget vim # Default recommended
     openvpn # Connectivity
     git gnupg # General needed tools
-    open-vm-tools
     tmux fish neofetch htop
     nixos-grub2-theme nixos-icons
   ];
