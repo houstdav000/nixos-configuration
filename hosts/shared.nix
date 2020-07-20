@@ -1,6 +1,7 @@
 # shared.nix
 #
 # Shared configuration
+
 { config, pkgs, lib, ... }: {
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
@@ -11,6 +12,8 @@
   networking = {
     enableIPv6 = true;
     useDHCP = false;
+
+    networkmanager.enable = true;
 
     firewall = {
       enable = true;
