@@ -11,7 +11,7 @@
     passwordAuthentication = true;
     permitRootLogin = "no";
     forwardX11 = false;
-    hostkeys = [
+    hostKeys = [
       {
         bits = 4096;
         path = "/etc/ssh_host_rsa_key";
