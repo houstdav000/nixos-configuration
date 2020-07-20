@@ -6,6 +6,9 @@
 
 { config, pkgs, ... }: {
 
+  # Allow non-free applications
+  nixpkgs.config.allowUnfree = true;
+
   # Import other configuration files
   imports = [
     ./hosts/dh-nixos.nix
