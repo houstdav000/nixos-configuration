@@ -39,4 +39,6 @@
   };
 
   hardware.opengl.driSupport32Bit = true;
+
+  programs.gnupg.agent.pinentryFlavor = "gnome3";
 }
