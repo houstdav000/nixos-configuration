@@ -25,7 +25,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    wget git gnupg
+    wget git gnupg neovim
     neofetch htop
     nixos-grub2-theme nixos-icons
   ];
