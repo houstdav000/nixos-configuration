@@ -12,7 +12,7 @@
   # Import other configuration files
   imports = [
     ./hosts/dh-nixos.nix
-    ./users/david.nix
+    ./users/david/david.nix
   ];
 
   # This value determines the NixOS release from which the default
