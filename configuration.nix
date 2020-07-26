@@ -11,7 +11,7 @@
 
   # Import other configuration files
   imports = [
-    ./hosts/dh-nixos.nix
+    ./hosts/dh-laptop2.nix
     ./users/david/david.nix
   ];
 

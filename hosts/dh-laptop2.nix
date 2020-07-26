@@ -10,7 +10,6 @@
     ./shared.nix
     ../desktops/gnome.nix
     ../hardware/btrfs-filesystem.nix
-    ../hardware/luks-yubikey.nix
     ../services/cupsd.nix
     ../services/podman.nix
     ../services/libvirtd.nix
@@ -18,12 +17,16 @@
 
   networking = {
     hostName = "dh-laptop2"; # Define your hostname.
-    wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
     # The global useDHCP flag is deprecated, therefore explicitly set to false here.
     # Per-interface useDHCP will be mandatory in the future, so this generated config
     # replicates the default behaviour.
-    interfaces.ens33.useDHCP = true;
+    interfaces = {
+      enp0s20f0u4u4.useDHCP = true;
+      enp1s0.useDHCP = true;
+      wlp0s20f3.useDHCP = true;
+    };
   };
 
   # List packages installed in system profile. To search, run:
