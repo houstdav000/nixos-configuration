@@ -8,8 +8,9 @@
   # Import other configuration files
   imports = [
     ./shared.nix
-    ../desktops/gnome.nix
+    ../desktops/kde.nix
     ../hardware/btrfs-filesystem.nix
+    ../hardware/luks.nix
     ../services/cupsd.nix
     ../services/podman.nix
     ../services/libvirtd.nix

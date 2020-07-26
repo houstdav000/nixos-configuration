@@ -1,26 +1,22 @@
-# gnome-configuration.nix
+# kde-configuration.nix
 #
-# Gnome Desktop Manager Definition and configuration file
+# KDE Plasma Desktop Manager Definition and configuration file
 
 { config, pkgs, lib, ... }: {
-
   services.xserver = {
     enable = true;
     autorun = true;
     layout = "us";
-    desktopManager.gnome3.enable = true;
+    desktopManager.plasma5.enable = true;
     displayManager = {
-      defaultSession = "gnome";
-      gdm = {
+      defaultSession = "KDE";
+      sddm = {
         enable = true;
         autoLogin = {
           enable = true;
-          delay = 0;
           user = "david";
         };
-        autoSuspend = true;
-        debug = false;
-        wayland = true;
+        autoNumlock = true;
       };
       hiddenUsers = [ "nobody" ];
     };
@@ -40,5 +36,5 @@
 
   hardware.opengl.driSupport32Bit = true;
 
-  programs.gnupg.agent.pinentryFlavor = "gnome3";
+  programs.gnupg.agent.pinentryFlavor = "qt";
 }
