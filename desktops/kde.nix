@@ -9,14 +9,14 @@
     layout = "us";
     desktopManager.plasma5.enable = true;
     displayManager = {
-      defaultSession = "KDE";
+      defaultSession = "plasma5";
       sddm = {
         enable = true;
-        autoLogin = {
-          enable = true;
-          user = "david";
-        };
         autoNumlock = true;
+      };
+      autoLogin = {
+        enable = true;
+        user = "david";
       };
       hiddenUsers = [ "nobody" ];
     };
