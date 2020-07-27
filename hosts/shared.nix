@@ -7,6 +7,19 @@
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
+    
+    grub = {
+      enable = true;
+      version = 2;
+      efiSupport = true;
+      enableCryptodisk = true;
+      #trustedBoot = {
+      #  enable = true;
+      #  systemHasTPM = "YES_TPM_is_activated";
+      #};
+      
+      device = "nodev";
+    };
   };
 
   networking = {
