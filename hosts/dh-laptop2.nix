@@ -10,7 +10,6 @@
     ./shared.nix
     ../desktops/kde.nix
     ../hardware/btrfs-filesystem.nix
-    ../hardware/luks.nix
     ../services/cupsd.nix
     ../services/podman.nix
     ../services/libvirtd.nix
