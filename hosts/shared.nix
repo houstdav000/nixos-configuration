@@ -7,7 +7,7 @@
   boot.loader = {
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
-    
+
     grub = {
       enable = true;
       version = 2;
@@ -17,7 +17,7 @@
       #  enable = true;
       #  systemHasTPM = "YES_TPM_is_activated";
       #};
-      
+
       device = "nodev";
     };
   };
@@ -41,6 +41,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    nftables
     wget git gnupg neovim
     neofetch htop
     nixos-grub2-theme nixos-icons
