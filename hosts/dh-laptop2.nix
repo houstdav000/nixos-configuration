@@ -12,7 +12,7 @@
     ../hardware/btrfs-filesystem.nix
     ../services/cupsd.nix
     ../services/podman.nix
-    ../services/libvirtd.nix
+    ../services/virtualbox.nix
   ];
 
   networking = {
