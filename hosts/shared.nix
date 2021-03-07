@@ -3,6 +3,13 @@
 # Shared configuration
 
 { config, pkgs, lib, ... }: {
+  boot.plymouth.enable = true;
+
+  boot.kernelParams = [
+    "quiet"
+    "vga=current"
+  ];
+
   # Use the systemd-boot EFI boot loader.
   boot.loader = {
     systemd-boot.enable = true;
@@ -62,4 +69,5 @@
   # Enable sound
   sound.enable = true;
   hardware.pulseaudio.enable = true;
+
 }
