@@ -21,10 +21,6 @@
         debug = false;
         wayland = true;
       };
-      autoLogin = {
-        enable = true;
-        user = "david";
-      };
       hiddenUsers = [ "nobody" ];
     };
     libinput = {
@@ -32,7 +28,7 @@
       touchpad = {
         disableWhileTyping = true;
         tapping = true;
-        naturalScrolling = false;
+        naturalScrolling = true;
         middleEmulation = false;
         accelProfile = "flat";
         scrollMethod = "twofinger";
