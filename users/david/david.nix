@@ -5,11 +5,7 @@
 { config, pkgs, ... }:
 
 let
-  home-manager = builtins.fetchGit {
-    url = "https://github.com/rycee/home-manager.git";
-    rev = "318bc0754ed6370cfcae13183a7f13f7aa4bc73f";
-    ref = "release-20.03";
-  };
+  home-manager = builtins.fetchTarball https://github.com/nix-community/home-manager/archive/master.tar.gz;
 
 in {
 
@@ -28,6 +24,5 @@ in {
     subUidRanges = [{ startUid = 100000; count = 65536; }];
     subGidRanges = [{ startGid = 100000; count = 65536; }];
     openssh.authorizedKeys.keys = ["ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMNGHlmwe95TX1/5DQNqoZqiaZf6jYb7pmMGgdYaMp6t david@DH-LAPTOP2"];
-    shell = pkgs.fish;
   };
 }

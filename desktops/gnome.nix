@@ -4,6 +4,10 @@
 
 { config, pkgs, lib, ... }: {
 
+  environment.systemPackages = with pkgs.gnome3; [
+    gnome-tweaks
+  ];
+
   services.xserver = {
     enable = true;
     autorun = true;
@@ -13,25 +17,26 @@
       defaultSession = "gnome";
       gdm = {
         enable = true;
-        autoLogin = {
-          enable = true;
-          delay = 0;
-          user = "david";
-        };
         autoSuspend = true;
         debug = false;
         wayland = true;
+      };
+      autoLogin = {
+        enable = true;
+        user = "david";
       };
       hiddenUsers = [ "nobody" ];
     };
     libinput = {
       enable = true;
-      accelProfile = "flat";
-      disableWhileTyping = true;
-      middleEmulation = false;
-      naturalScrolling = false;
-      scrollMethod = "twofinger";
-      tapping = true;
+      touchpad = {
+        disableWhileTyping = true;
+        tapping = true;
+        naturalScrolling = false;
+        middleEmulation = false;
+        accelProfile = "flat";
+        scrollMethod = "twofinger";
+      };
     };
     terminateOnReset = true;
     useGlamor = true;

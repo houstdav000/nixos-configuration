@@ -8,7 +8,7 @@
   # Import other configuration files
   imports = [
     ./shared.nix
-    ../desktops/kde.nix
+    ../desktops/gnome.nix
     ../hardware/btrfs-filesystem.nix
     ../services/cupsd.nix
     ../services/podman.nix
@@ -23,7 +23,7 @@
     # Per-interface useDHCP will be mandatory in the future, so this generated config
     # replicates the default behaviour.
     interfaces = {
-      enp0s20f0u4u4.useDHCP = true;
+      #enp0s20f0u4u4.useDHCP = true;
       enp1s0.useDHCP = true;
       wlp0s20f3.useDHCP = true;
     };
