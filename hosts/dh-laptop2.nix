@@ -34,4 +34,6 @@
   environment.systemPackages = with pkgs; [
     openvpn # Connectivity
   ];
+
+  services.tlp.enable = true;
 }
