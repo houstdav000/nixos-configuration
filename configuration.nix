@@ -9,6 +9,13 @@
   # Allow non-free applications
   nixpkgs.config.allowUnfree = true;
 
+  nix = {
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
+
   # Import other configuration files
   imports = [
     ./hosts/dh-laptop2.nix

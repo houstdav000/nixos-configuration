@@ -10,9 +10,16 @@
     ./shared.nix
     ../desktops/gnome.nix
     ../hardware/btrfs-filesystem.nix
+    ../services/libvirtd.nix
     ../services/cupsd.nix
     ../services/podman.nix
     ../services/virtualbox.nix
+  ];
+
+  boot.kernelPackages = pkgs.linuxPackages_latest_hardened;
+  boot.kernelParams = [
+    "intel_iommu=on"
+    "quiet"
   ];
 
   networking = {
