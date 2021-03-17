@@ -19,7 +19,7 @@
   # Import other configuration files
   imports = [
     ./hosts/dh-laptop2.nix
-    ./users/david/david.nix
+    ./users/david.nix
   ];
 
   # This value determines the NixOS release from which the default
