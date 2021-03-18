@@ -28,4 +28,10 @@
       recommendedSysctlSettings = true;
     };
   };
+  environment.etc."pam.d/system-login" = {
+    mode="0644";
+    text=''
+      session    optional    pam_cgfs.so -c freezer,memory,name=systemd,unified
+    '';
+  };
 }
