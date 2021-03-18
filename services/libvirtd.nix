@@ -11,11 +11,21 @@
   ];
 
   boot.kernelModules = [ "kvm-amd" "kvm-intel" ];
-  virtualisation.libvirtd = {
-    enable = true;
-    onBoot = "ignore";
-    onShutdown = "suspend";
-    qemuOvmf = true;
-    qemuRunAsRoot = true;
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+      onBoot = "ignore";
+      onShutdown = "suspend";
+      qemuOvmf = true;
+      qemuRunAsRoot = true;
+    };
+    lxc = {
+      enable = true;
+      lxcfs.enable = true;
+    };
+    lxd = {
+      enable = true;
+      recommendedSysctlSettings = true;
+    };
   };
 }

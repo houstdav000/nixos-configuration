@@ -21,10 +21,17 @@
           system = "x86_64-linux";
           modules = [
             # Add home-manager to all configs
-            ({ ... }: {
+            ({ pkgs, ... }: {
               imports = [
+                { system.stateVersion = "21.05"; }
                 {
-                  nix.nixPath = [ "nixpkgs=${nixpkgs}" ];
+                  nix = {
+                    package = pkgs.nixFlakes;
+                    extraOptions = ''
+                      experimental-features = nix-command flakes
+                    '';
+                    nixPath = [ "nixpkgs=${nixpkgs}" ];
+                  };
                 }
                 baseCfg
                 home-manager.nixosModules.home-manager
@@ -38,11 +45,10 @@
         };
     in {
       nixosConfigurations = {
-        inherit nixpkgs;
-
         dh-laptop2 = defFlakeSystem {
           imports = [
-            ./configuration.nix
+            ./hosts/dh-laptop2.nix
+            ./users/david.nix
 
             # Add home-manager config
             { home-manager.users.david = nix-home.nixosModules.desktop; }
