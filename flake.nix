@@ -62,7 +62,7 @@
 
             # Add home-manager config
             ({ ... }: {
-              home-manager.users.david = nix-home.nixosModules.desktop;
+              home-manager.users.david = nix-home.nixosModules.dh-laptop2;
             })
           ];
         };
