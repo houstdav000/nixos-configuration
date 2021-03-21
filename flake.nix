@@ -21,7 +21,7 @@
           system = "x86_64-linux";
           modules = [
             # Add home-manager to all configs
-            ({ pkgs, ... }: {
+            ({ pkgs, lib, ... }: {
               imports = [
                 { system.stateVersion = "21.05"; }
                 {
@@ -31,6 +31,7 @@
                       experimental-features = nix-command flakes
                     '';
                     nixPath = [ "nixpkgs=${nixpkgs}" ];
+                    registry.nixpkgs.flake = nixpkgs;
                   };
                 }
                 baseCfg
@@ -51,9 +52,11 @@
             ./users/david.nix
 
             # Add home-manager config
-            { home-manager.users.david = nix-home.nixosModules.desktop; }
+            ({ ... }: {
+              home-manager.users.david = nix-home.nixosModules.desktop;
+            })
           ];
         };
+      };
     };
-  };
 }
