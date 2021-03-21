@@ -46,23 +46,26 @@
             })
           ];
         };
-    in flake-utils.lib.eachDefaultSystem (system:
-      let pkgs = nixpkgs.legacyPackages.${system};
-      in rec {
-        devShell = pkgs.mkShell { nativeBuildInputs = with pkgs; [ nixfmt ]; };
-      }) // {
-        nixosConfigurations = {
-          dh-laptop2 = defFlakeSystem {
-            imports = [
-              ./hosts/dh-laptop2.nix
-              ./users/david.nix
+    in
+    flake-utils.lib.eachDefaultSystem
+      (system:
+        let pkgs = nixpkgs.legacyPackages.${system};
+        in
+        rec {
+          devShell = pkgs.mkShell { nativeBuildInputs = with pkgs; [ nixpkgs-fmt rnix-lsp ]; };
+        }) // {
+      nixosConfigurations = {
+        dh-laptop2 = defFlakeSystem {
+          imports = [
+            ./hosts/dh-laptop2.nix
+            ./users/david.nix
 
-              # Add home-manager config
-              ({ ... }: {
-                home-manager.users.david = nix-home.nixosModules.desktop;
-              })
-            ];
-          };
+            # Add home-manager config
+            ({ ... }: {
+              home-manager.users.david = nix-home.nixosModules.desktop;
+            })
+          ];
         };
       };
+    };
 }
