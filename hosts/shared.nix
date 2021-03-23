@@ -52,6 +52,7 @@
     wget git gnupg neovim
     neofetch htop
     nixos-grub2-theme nixos-icons
+    openvpn openconnect
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
