@@ -52,7 +52,12 @@
         let pkgs = nixpkgs.legacyPackages.${system};
         in
         rec {
-          devShell = pkgs.mkShell { nativeBuildInputs = with pkgs; [ nixpkgs-fmt rnix-lsp ]; };
+          devShell = pkgs.mkShell {
+            nativeBuildInputs = with pkgs; [
+              nixpkgs-fmt
+              rnix-lsp
+            ];
+          };
         }) // {
       nixosConfigurations = {
         dh-laptop2 = defFlakeSystem {
