@@ -20,8 +20,8 @@
 
   # Set containerpolicy
   environment.etc."containers/policy.json" = {
-    mode="0644";
-    text=''
+    mode = "0644";
+    text = ''
       {
         "default": [
           {
@@ -40,8 +40,8 @@
   };
 
   environment.etc."containers/registry.conf" = {
-    mode="0644";
-    text=''
+    mode = "0644";
+    text = ''
       [registries.search]
       registries = ['docker.io', 'quay.io']
     '';

@@ -13,14 +13,19 @@
     ../services/libvirtd.nix
     ../services/cupsd.nix
     ../services/podman.nix
-    ../services/virtualbox.nix
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_latest_hardened;
-  boot.kernelParams = [
-    "intel_iommu=on"
-    "quiet"
-  ];
+  boot = {
+    # Harden the kernel, but still allow unprivileged namespaces
+    kernel.sysctl =
+      {
+        "kernel.unprivileged_userns_clone" = "1";
+      };
+    kernelPackages = pkgs.linuxPackages_latest_hardened;
+    kernelParams = [
+      "intel_iommu=on"
+    ];
+  };
 
   networking = {
     hostName = "dh-laptop2"; # Define your hostname.
@@ -35,12 +40,6 @@
       wlp0s20f3.useDHCP = true;
     };
   };
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    openvpn # Connectivity
-  ];
 
   services.tlp.enable = true;
 }

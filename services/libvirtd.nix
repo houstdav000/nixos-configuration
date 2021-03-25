@@ -19,18 +19,18 @@
       qemuOvmf = true;
       qemuRunAsRoot = true;
     };
-    lxc = {
-      enable = true;
-      lxcfs.enable = true;
-    };
-    lxd = {
-      enable = true;
-      recommendedSysctlSettings = true;
-    };
+    # lxc = {
+    #   enable = true;
+    #   lxcfs.enable = true;
+    # };
+    # lxd = {
+    #   enable = true;
+    #   recommendedSysctlSettings = true;
+    # };
   };
   environment.etc."pam.d/system-login" = {
-    mode="0644";
-    text=''
+    mode = "0644";
+    text = ''
       session    optional    pam_cgfs.so -c freezer,memory,name=systemd,unified
     '';
   };

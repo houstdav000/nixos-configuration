@@ -2,7 +2,7 @@
 #
 # CUPS Printing Daemon Configuration
 
-{ config, pkgs, ... }: {
+{ config, ... }: {
   services.printing = {
     enable = true;
     browsing = false;

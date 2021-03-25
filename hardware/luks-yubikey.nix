@@ -5,17 +5,17 @@
 { config, pkgs, lib, ... }: {
   boot.initrd = {
     # Minimal list of modules to use the EFI system partition and the YubiKey
-    kernelModules = [ "vfat" "nls_cp437" "nls_iso8859-1" "usbhid"  ];
+    kernelModules = [ "vfat" "nls_cp437" "nls_iso8859-1" "usbhid" ];
 
     luks = {
       # Crypto setup, set modules accordingly
-      cryptoModules = [ "aes" "xts" "sha512"  ];
+      cryptoModules = [ "aes" "xts" "sha512" ];
 
       # Enable support for the YubiKey PBA
       yubikeySupport = true;
 
       # Configuration to use your Luks device
-      devices = [ {
+      devices = [{
         name = "nixos-enc";
         device = "/dev/by-label/nixos-enc";
         preLVM = true; # You may want to set this to false if you need to start a network service first
@@ -26,7 +26,7 @@
             device = "/dev/by-label/boot";
           };
         };
-      } ];
+      }];
     };
   };
 }

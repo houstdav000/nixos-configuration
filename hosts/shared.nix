@@ -49,23 +49,30 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     nftables
-    wget git gnupg neovim
-    neofetch htop
-    nixos-grub2-theme nixos-icons
-    openvpn openconnect
+    wget
+    git
+    gnupg
+    neovim
+    neofetch
+    htop
+    nixos-grub2-theme
+    nixos-icons
+    openvpn
+    openconnect
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   #  started in user sessions.
-  programs.vim.defaultEditor = true;
-  programs.thefuck.enable = true;
-  programs.tmux.enable = true;
-  programs.fish.enable = true;
-  programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
+  programs =
+    {
+      vim.defaultEditor = true;
+      tmux.enable = true;
+      mtr.enable = true;
+      gnupg.agent = {
+        enable = true;
+        enableSSHSupport = true;
+      };
+    };
 
   # Enable sound
   sound.enable = true;

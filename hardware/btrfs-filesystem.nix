@@ -2,48 +2,53 @@
 # and may be overwritten by future invocations.  Please make changes
 # to /etc/nixos/configuration.nix instead.
 { config, lib, pkgs, modulesPath, ... }: {
-  imports = [ 
+  imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  boot.initrd.availableKernelModules = [ 
-    "xhci_pci" 
-    "ahci" 
-    "nvme" 
-    "usb_storage" 
-    "sd_mod"
-    "sdhci_pci"
-  ];
-  boot.initrd.kernelModules = [ "dm-snapshot" ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
-
-  fileSystems."/" = {
-      device = "/dev/disk/by-label/fsroot";
-      fsType = "btrfs";
-      options = [ "subvol=nixos" ];
+  boot =
+    {
+      initrd =
+        {
+          availableKernelModules = [
+            "xhci_pci"
+            "ahci"
+            "nvme"
+            "usb_storage"
+            "sd_mod"
+            "sdhci_pci"
+          ];
+          kernelModules = [ "dm-snapshot" ];
+        };
+      kernelModules = [ "kvm-intel" ];
+      extraModulePackages = [ ];
     };
 
-  fileSystems."/home" = { 
-      device = "/dev/disk/by-label/fsroot";
-      fsType = "btrfs";
-      options = [ "subvol=home" ];
+  fileSystems =
+    {
+      "/" = {
+        device = "/dev/disk/by-label/fsroot";
+        fsType = "btrfs";
+        options = [ "subvol=nixos" ];
+      };
+      "/home" = {
+        device = "/dev/disk/by-label/fsroot";
+        fsType = "btrfs";
+        options = [ "subvol=home" ];
+      };
+      "/nix" = {
+        device = "/dev/disk/by-label/fsroot";
+        fsType = "btrfs";
+        options = [ "subvol=nix" ];
+      };
+      "/boot" =
+        {
+          device = "/dev/disk/by-label/boot";
+          fsType = "vfat";
+        };
     };
-
-  fileSystems."/nix" = { 
-      device = "/dev/disk/by-label/fsroot";
-      fsType = "btrfs";
-      options = [ "subvol=nix" ];
-    };
-
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-label/boot";
-      fsType = "vfat";
-    };
-
   swapDevices =
-    [ { device = "/dev/disk/by-label/swap"; }
-    ];
+    [{ device = "/dev/disk/by-label/swap"; }];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 }

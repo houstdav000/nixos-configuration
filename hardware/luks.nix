@@ -9,11 +9,11 @@
     luks = {
       cryptoModules = [ "aes" "xts" "sha512" ];
 
-      devices = [ {
+      devices = [{
         name = "nixos-enc";
         device = "/dev/by-label/nixos-enc";
         preLVM = true;
-      } ];
+      }];
     };
   };
 }
