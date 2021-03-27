@@ -1,7 +1,7 @@
 # Referencing https://github.com/nix-community/home-manager/pull/1697/files
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     flake-utils.url = "github:numtide/flake-utils";
 

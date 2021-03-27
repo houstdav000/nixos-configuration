@@ -11,8 +11,8 @@
     description = "David Houston";
     extraGroups = [ "wheel" "networkmanager" "audio" ]; # Enable ‘sudo’ for the user.
     uid = 1000;
-    subUidRanges = [{ startUid = 100000; count = 65536; }];
-    subGidRanges = [{ startGid = 100000; count = 65536; }];
+    # subUidRanges = [{ startUid = 100000; count = 65536; }];
+    # subGidRanges = [{ startGid = 100000; count = 65536; }];
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMNGHlmwe95TX1/5DQNqoZqiaZf6jYb7pmMGgdYaMp6t david@DH-LAPTOP2" ];
   };
 
