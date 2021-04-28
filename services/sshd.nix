@@ -9,7 +9,6 @@
     allowSFTP = true;
     challengeResponseAuthentication = true;
     passwordAuthentication = true;
-    permitRootLogin = "no";
     forwardX11 = false;
     hostKeys = [
       {

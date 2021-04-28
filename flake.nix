@@ -71,6 +71,11 @@
             })
           ];
         };
+        ashley = defFlakeSystem {
+          imports = [
+            ./hosts/ashley.nix
+          ];
+        };
       };
     };
 }
