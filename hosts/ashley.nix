@@ -82,4 +82,16 @@
       };
     };
   };
+
+  networking.firewall.allowedTCPPorts = [
+    139
+    445
+    8096
+    8920
+  ];
+
+  networking.firewall.allowedUDPPorts = [
+    137
+    138
+  ];
 }
