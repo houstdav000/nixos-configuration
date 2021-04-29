@@ -51,6 +51,34 @@
             "/mnt/share:/mnt"
           ];
         };
+
+        "samba" = {
+          autoStart = true;
+          cmd = [
+            "-n"
+            "-p"
+            "-s \"HNet Share;/share;yes;no;yes;all;none;;Network Share for the Houston Family\""
+          ];
+          environment = {
+            TZ = "EST5EDT";
+          };
+          extraOptions = [
+            "--network=host"
+          ];
+          image = "dperson/samba:latest";
+          ports = [
+            # Samba Ports
+            "139:139"
+            "445:445"
+
+            # nmbd Ports
+            "137:137/udp"
+            "138:138/udp"
+          ];
+          volumes = [
+            "/mnt/share:/share"
+          ];
+        };
       };
     };
   };
