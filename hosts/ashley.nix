@@ -57,7 +57,7 @@
           cmd = [
             "-n"
             "-p"
-            "-s \\\"nas;/share;yes;no;yes;\\\""
+            "-s nas;/share;yes;no;yes;"
           ];
           environment = {
             TZ = "EST5EDT";
