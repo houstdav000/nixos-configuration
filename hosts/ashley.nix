@@ -33,4 +33,25 @@
     hashedPassword = "$6$paNcgqe0JBE3W$u1CwTahnW5wMlfxkzTApWJdYyncnDWa6XLhr0GucM2DYPeQw/Tyv2mo8HtJw/OcMxhjK7SkGfJtCGz/80wlxS0";
     openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL5LI8aGsOSdSD/WNHZBE7+cXQ82KR6zqSaL3yt311X8" ];
   };
+
+  virtualisation = {
+    oci-containers = {
+      backend = "podman";
+
+      containers = {
+        "embyserver" = {
+          autoStart = true;
+          image = "emby/embyserver:latest";
+          ports = [
+            "8096:8096"
+            "8920:8920"
+          ];
+          volumes = [
+            "/config/emby:/config"
+            "/mnt/share:/mnt"
+          ];
+        };
+      };
+    };
+  };
 }
