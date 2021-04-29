@@ -57,7 +57,7 @@
           cmd = [
             "-n"
             "-p"
-            "-s \"HNet Share;/share;yes;no;yes;all;none;;Network Share for the Houston Family\""
+            "-s \"hnet-share;/share;yes;no;yes;all;none;;Network Share for the Houston Family\""
           ];
           environment = {
             TZ = "EST5EDT";
