@@ -72,6 +72,23 @@
             "/mnt/share:/share"
           ];
         };
+
+        "nextpvr" = {
+          autoStart = true;
+          extraOptions = [
+            "--device /dev/dvb:/dev/dvb"
+          ];
+          image = "nextpvr/nextpvr_amd64:stable";
+          ports = [
+            "8866:8866"
+            "16891:16891/udp"
+          ];
+          volumes = [
+            "/config/nextpvr:/config"
+            "/mnt/share/videos/tv:/recordings"
+            "/mnt/share/videos/tv:/buffer"
+          ];
+        };
       };
     };
   };
@@ -80,6 +97,11 @@
     139
     445
     8096
+    8866
     8920
+  ];
+
+  networking.firewall.allowedUDPPorts = [
+    16891
   ];
 }
