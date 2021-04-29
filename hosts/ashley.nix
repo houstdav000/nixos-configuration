@@ -58,23 +58,15 @@
             "-n"
             "-p"
             "-u public;password"
-            "-s nas;/share;yes;no;yes;all;no;"
+            "-snas;/share;yes;no;yes;all;no;"
           ];
           environment = {
             TZ = "EST5EDT";
           };
-          extraOptions = [
-            "--network=host"
-          ];
           image = "dperson/samba:latest";
           ports = [
-            # Samba Ports
             "139:139"
             "445:445"
-
-            # nmbd Ports
-            "137:137/udp"
-            "138:138/udp"
           ];
           volumes = [
             "/mnt/share:/share"
@@ -89,10 +81,5 @@
     445
     8096
     8920
-  ];
-
-  networking.firewall.allowedUDPPorts = [
-    137
-    138
   ];
 }
