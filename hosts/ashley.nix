@@ -76,7 +76,7 @@
         "nextpvr" = {
           autoStart = true;
           extraOptions = [
-            "--device /dev/dvb:/dev/dvb"
+            "--device=/dev/dvb"
           ];
           image = "nextpvr/nextpvr_amd64:stable";
           ports = [
