@@ -42,7 +42,7 @@
               ];
               system.autoUpgrade = {
                 enable = true;
-                dates = "04:30";
+                dates = "04:31";
                 flake = "github:houstdav000/nixos-configuration";
               };
               system.configurationRevision =
