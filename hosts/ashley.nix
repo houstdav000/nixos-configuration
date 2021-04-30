@@ -89,6 +89,20 @@
             "/mnt/share/videos/tv:/buffer"
           ];
         };
+
+        "zap2xml" = {
+          autoStart = true;
+          environment = {
+            USERNAME = "{{USERNAME}}";
+            PASSWORD = "{{PASSWORD}}";
+            OPT_ARGS = "-I -D";
+            XMLTV_FILENAME = "xmltv.xml";
+          };
+          image = "shuaiscott/zap2xml";
+          volumes = [
+            "/config/nextpvr/listings:/data"
+          ];
+        };
       };
     };
   };
