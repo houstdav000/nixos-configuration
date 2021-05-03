@@ -93,14 +93,31 @@
         "zap2xml" = {
           autoStart = true;
           environment = {
-            USERNAME = "{{USERNAME}}";
-            PASSWORD = "{{PASSWORD}}";
+            USERNAME = "{{ZAP_USERNAME}}";
+            PASSWORD = "{{ZAP_PASSWORD}}";
             OPT_ARGS = "-I -D";
             XMLTV_FILENAME = "xmltv.xml";
           };
           image = "shuaiscott/zap2xml";
           volumes = [
             "/config/nextpvr/listings:/data"
+          ];
+        };
+
+        "duplicity" = {
+          autoStart = true;
+          environment = {
+            JOB_300_WHEN = "weekly";
+            DST = "b2://{{DUP_KEYID}}:{{DUP_KEY}}@{{DUP_BUCKET}}";
+            SRC = "/share";
+          };
+          extraOptions = [
+            "--hostname"
+            "--domainname"
+          ];
+          image = "tecnativa/duplicity:latest";
+          volumes = [
+            "/mnt/share:/share:ro"
           ];
         };
       };
