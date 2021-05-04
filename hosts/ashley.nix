@@ -69,7 +69,7 @@
             "445:445"
           ];
           volumes = [
-            "/mnt/share:/share"
+            "/mnt/share/nas:/share"
           ];
         };
 
@@ -85,8 +85,8 @@
           ];
           volumes = [
             "/config/nextpvr:/config"
-            "/mnt/share/videos/tv:/recordings"
-            "/mnt/share/videos/tv:/buffer"
+            "/mnt/share/pvr:/recordings"
+            "/mnt/share/pvr:/buffer"
           ];
         };
 
@@ -117,7 +117,7 @@
           ];
           image = "tecnativa/duplicity:latest";
           volumes = [
-            "/mnt/share:/share:ro"
+            "/mnt/share/nas:/share:ro"
           ];
         };
       };
