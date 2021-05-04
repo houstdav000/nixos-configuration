@@ -107,6 +107,9 @@
         "duplicity" = {
           autoStart = true;
           environment = {
+            JOB_500_WHAT = "dup full $SRC $DST";
+            JOB_500_WHEN = "weekly";
+            OPTIONS_EXTRA = "--metadata-sync-mode partial --full-if-older-than 1W --file-prefix-archive archive-$(hostname -f)- --file-prefix-manifest manifest-$(hostname -f)- --file-prefix-signature signature-$(hostname -f)-";
             PASSPHRASE = "{{DUP_PASSPHRASE}}";
             DST = "b2://{{DUP_KEYID}}:{{DUP_KEY}}@{{DUP_BUCKET}}";
             SRC = "/share";
