@@ -40,11 +40,6 @@
                 home-manager.nixosModules.home-manager
                 { home-manager.useUserPackages = true; }
               ];
-              system.autoUpgrade = {
-                enable = true;
-                dates = "04:31";
-                flake = "github:houstdav000/nixos-configuration";
-              };
               system.configurationRevision =
                 nixpkgs.lib.mkIf (self ? rev) self.rev;
               nix.registry.nixpkgs.flake = nixpkgs;
