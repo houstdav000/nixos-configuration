@@ -107,7 +107,7 @@
         "duplicity" = {
           autoStart = true;
           environment = {
-            JOB_300_WHEN = "weekly";
+            PASSPHRASE = "{{DUP_PASSPHRASE}}";
             DST = "b2://{{DUP_KEYID}}:{{DUP_KEY}}@{{DUP_BUCKET}}";
             SRC = "/share";
           };
