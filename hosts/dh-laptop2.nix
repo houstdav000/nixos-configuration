@@ -58,6 +58,4 @@
       wlp0s20f3.useDHCP = true;
     };
   };
-
-  services.tlp.enable = true;
 }
