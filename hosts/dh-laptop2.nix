@@ -8,7 +8,7 @@
   # Import other configuration files
   imports = [
     ./shared.nix
-    ../desktops/gnome.nix
+    ../desktops/sway.nix
     ../hardware/btrfs-filesystem.nix
     ../services/libvirtd.nix
     ../services/cupsd.nix
@@ -58,4 +58,6 @@
       wlp0s20f3.useDHCP = true;
     };
   };
+
+  services.tlp.enable = true;
 }
