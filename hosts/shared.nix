@@ -41,20 +41,20 @@
     nixos-icons
     openvpn
     openconnect
+    pamixer
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
   #  started in user sessions.
-  programs =
-    {
-      vim.defaultEditor = true;
-      tmux.enable = true;
-      mtr.enable = true;
-      gnupg.agent = {
-        enable = true;
-        enableSSHSupport = true;
-      };
+  programs = {
+    vim.defaultEditor = true;
+    tmux.enable = true;
+    mtr.enable = true;
+    gnupg.agent = {
+      enable = true;
+      enableSSHSupport = true;
     };
+  };
 
   # Enable sound
   sound.enable = true;
