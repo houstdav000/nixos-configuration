@@ -12,7 +12,7 @@
     enable = true;
     autorun = true;
     layout = "us";
-    desktopManager.gnome3.enable = true;
+    desktopManager.gnome.enable = true;
     displayManager = {
       defaultSession = "gnome";
       gdm = {

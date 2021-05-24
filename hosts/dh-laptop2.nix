@@ -8,7 +8,7 @@
   # Import other configuration files
   imports = [
     ./shared.nix
-    ../desktops/sway.nix
+    ../desktops/gnome.nix
     ../hardware/btrfs-filesystem.nix
     ../services/libvirtd.nix
     ../services/cupsd.nix
@@ -59,5 +59,5 @@
     };
   };
 
-  services.tlp.enable = true;
+  services.tlp.enable = false;
 }
