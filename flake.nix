@@ -28,12 +28,17 @@
                 { system.stateVersion = "21.05"; }
                 {
                   nix = {
-                    package = pkgs.nixFlakes;
+                    package = pkgs.nixUnstable;
                     extraOptions = ''
                       experimental-features = nix-command flakes
                     '';
                     nixPath = [ "nixpkgs=${nixpkgs}" ];
                     registry.nixpkgs.flake = nixpkgs;
+                  };
+                }
+                {
+                  nixpkgs.config = {
+                    allowUnfree = true;
                   };
                 }
                 baseCfg

@@ -4,11 +4,11 @@
 
 { config, pkgs, lib, ... }: {
 
-  environment.systemPackages = with pkgs; [
-    qemu
-    qemu-utils
-    qemu_kvm
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   qemu
+  #   qemu-utils
+  #   qemu_kvm
+  # ];
 
   boot.kernelModules = [ "kvm-amd" "kvm-intel" ];
   virtualisation = {

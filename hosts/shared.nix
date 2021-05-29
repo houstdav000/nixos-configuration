@@ -20,7 +20,6 @@
 
     firewall = {
       enable = true;
-      package = pkgs.iptables-nftables-compat;
       allowPing = true;
     };
   };
