@@ -2,7 +2,6 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
     flake-utils.url = "github:numtide/flake-utils";
 
     home-manager = {
@@ -12,11 +11,15 @@
 
     nix-home = {
       url = "github:houstdav000/nix-home";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+      	nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+      };
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-home, flake-utils }@inputs:
+  outputs = { self, ... }@inputs:
+    with inputs;
     let
       defFlakeSystem = baseCfg:
         nixpkgs.lib.nixosSystem {
