@@ -12,7 +12,7 @@
     nix-home = {
       url = "github:houstdav000/nix-home";
       inputs = {
-      	nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
       };
     };
